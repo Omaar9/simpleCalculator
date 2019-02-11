@@ -15,7 +15,7 @@ namespace Calculator.Test.Unit
         [SetUp]
         public void Setup()
         {
-             uut = new simpleCalculator.Calculator();
+            uut = new simpleCalculator.Calculator();
         }
 
         [Test]
@@ -25,14 +25,29 @@ namespace Calculator.Test.Unit
             //Act
             var result = uut.Add(2, 4);
 
-            //Asert
+            //Assert
             Assert.That(result, Is.EqualTo(6));
-
-            //Eller
-            Assert.That(uut.Add(8, 2), Is.EqualTo(10));
-            Assert.That(uut.Add(16, 4), Is.EqualTo(20));
-
         }
+
+        // TestCases
+        [TestCase(8, 2, 10)]
+        [TestCase(16, 4, 20)]
+        [TestCase(20, 5, 25)]
+
+        [Test]
+        public void Add_AddPosAndNeg_Result()
+        {
+            //Act
+            var result = uut.Add(-2, 4);
+
+            //Assert 
+            Assert.That(result, Is.EqualTo(2));
+        }
+
+        // TestCases
+        [TestCase(-3, 9, 6)]
+        [TestCase(-4, 10, 6)]
+        [TestCase(12, -6, 6)]
 
         [Test]
         //Subtraktion
@@ -41,45 +56,61 @@ namespace Calculator.Test.Unit
             //Act
             var result = uut.Subtract(8, 4);
 
-            //Asert
+            //Assert
             Assert.That(result, Is.EqualTo(4));
-
-            //Eller
-            Assert.That(uut.Subtract(8, 4), Is.EqualTo(4));
-            Assert.That(uut.Subtract(10,5),Is.EqualTo(5));
-            Assert.That(uut.Subtract(20, 10), Is.EqualTo(10));
-
         }
+
+        // TestCases
+        [TestCase(8, 4, 4)]
+        [TestCase(10, 5, 5)]
+        [TestCase(20, 10, 10)]
+
+        [Test]
+        public void Subtract_SubtractPosAndNeg_Result()
+        {
+            //Act
+            var result = uut.Subtract(-2, 4);
+
+            //Assert 
+            Assert.That(result, Is.EqualTo(-6));
+        }
+
+        // TestCases
+        [TestCase(-3, 9, -12)]
+        [TestCase(-4, 10, -14)]
+        [TestCase(12, -6, 18)]
 
         [Test]
         //Multiplikation
-        public void Multiply_MultiplyAandB_Return64()
+        public void Multiply_MultiplyAandB_Return49()
         {
             //Act
             var result = uut.Multiply(7, 7);
 
-            //Asert
+            //Assert
             Assert.That(result, Is.EqualTo(49));
-
-            //Eller
-            Assert.That(uut.Multiply(7, 7), Is.EqualTo(49));
-            Assert.That(uut.Multiply(6, 4), Is.EqualTo(24));
-            Assert.That(uut.Multiply(8, 2), Is.EqualTo(16));
-
         }
+
+        [TestCase(7, 7, 49)]
+        [TestCase(6, 4, 24)]
+        [TestCase(8, 2, 16)]
 
         [Test]
         public void Power_NumberAandB_Result()
         {
             //Act
-            var result = uut.Power(8, 8);
+            var result = uut.Power(8, 2);
 
             //Asert
-            Assert.That(result, Is.EqualTo(16777216));
+            Assert.That(result, Is.EqualTo(64));
 
             //Eller
-            Assert.That(uut.Power(8, 8), Is.EqualTo(16777216));
+            Assert.That(uut.Power(8, 2), Is.EqualTo(64));
         }
+
+        [TestCase(8, 2, 64)]
+        [TestCase(2, 3, 8)]
+        [TestCase(1, 4, 1)]
 
     }
 }
