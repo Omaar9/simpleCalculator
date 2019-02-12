@@ -93,7 +93,7 @@ namespace Calculator.Test.Unit
             [TestCase(6, 4, 24)]
             [TestCase(8, 2, 16)]
             [TestCase(5, 4, 20)]
-            [TestCase(3, 9, 27)]
+            //[TestCase(3, 9, 27)]
 
         public void Multiply_MultiplyAandB_Result(double a, double b, double forventet)
             {
